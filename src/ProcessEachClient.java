@@ -1,16 +1,20 @@
 //********************************************************************
 //
-//  Author:        Instructor
+//  Author:        Winton Haisler
 //
-//  Program #:     Three and Four
+//  Project #:     Three
 //
 //  File Name:     ProcessEachClient.java
 //
 //  Course:        COSC 4301 Modern Programming
 //
+//  Due Date:      3/9/2024
+//
 //  Instructor:    Prof. Fred Kumi
 //
-//  Description:   Thread Server example
+//  Chapter:       Oracle OpenJDK 21.0.1
+//
+//  Description:
 //
 //********************************************************************
 
@@ -171,7 +175,7 @@ public class ProcessEachClient implements Runnable{
 
     private ArrayList<Integer> createPrimeList(ArrayList<Integer> data)
     {
-        return data.stream().filter(num -> isPrime(num)).collect(Collectors.toCollection(ArrayList::new));
+        return data.stream().filter(this::isPrime).collect(Collectors.toCollection(ArrayList::new));
     }
 
     //***************************************************************

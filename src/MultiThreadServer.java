@@ -2,21 +2,19 @@
 //
 //  Author:        Winton Haisler
 //
-//  Project #:     Two
+//  Project #:     Three
 //
-//  File Name:     ServerCode.java
+//  File Name:     MultiThreadServer.java
 //
 //  Course:        COSC 4301 Modern Programming
 //
-//  Due Date:      2/19/2024
+//  Due Date:      3/9/2024
 //
 //  Instructor:    Prof. Fred Kumi
 //
 //  Chapter:       Oracle OpenJDK 21.0.1
 //
-//  Description:   server code take in a string of 3 space seperated
-//  			   integers from a client, verify the input, calculate
-//  			   statistics, and pass the results back to the client
+//  Description:
 //
 //********************************************************************
 

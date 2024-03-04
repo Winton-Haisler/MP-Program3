@@ -2,20 +2,19 @@
 //
 //  Author:        Winton Haisler
 //
-//  Project #:     Two
+//  Project #:     Three
 //
-//  File Name:     ClientCode.java
+//  File Name:     MultiThreadClient.java
 //
 //  Course:        COSC 4301 Modern Programming
 //
-//  Due Date:      2/19/2024
+//  Due Date:      3/9/2024
 //
 //  Instructor:    Prof. Fred Kumi
 //
 //  Chapter:       Oracle OpenJDK 21.0.1
 //
-//  Description:   client code to take in 3 space seperated integers
-//                 passing them to a server and displaying the response.
+//  Description:
 //
 //********************************************************************
 
