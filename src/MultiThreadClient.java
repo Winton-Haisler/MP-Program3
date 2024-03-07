@@ -14,7 +14,9 @@
 //
 //  Chapter:       Oracle OpenJDK 21.0.1
 //
-//  Description:
+//  Description:   client code to take in 2 space and or comma seperated
+//                 integers passing them to a server and displaying the
+//                 response.
 //
 //********************************************************************
 
@@ -98,6 +100,7 @@ public class MultiThreadClient
             readServer(input);
             System.out.print("Enter a number or \"Bye\" to quit: ");
         }
+        writeClient(output, userInput);
     }
 
     //***************************************************************

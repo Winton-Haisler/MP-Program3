@@ -14,7 +14,8 @@
 //
 //  Chapter:       Oracle OpenJDK 21.0.1
 //
-//  Description:
+//  Description:   Server code to handle connection and assignment
+//                 of clients to processing threads
 //
 //********************************************************************
 
@@ -53,7 +54,7 @@ public class MultiThreadServer {
     //
     //  Method:       runServer
     //
-    //  Description:  control connection to client
+    //  Description:  control connecting to clients
     //
     //  Parameters:   None
     //
@@ -65,13 +66,12 @@ public class MultiThreadServer {
         ServerSocket serverSocket = null;
 
         try {
-            // Create TCP Server Socket
             serverSocket = new ServerSocket(port);
-            System.out.println("[TCP Server says] TCP Server created on port " + port);
+            System.out.println("Server created on port " + port);
         }
         catch (IOException e)
         {
-            System.out.println("[TCP Server says] Error: TCP Server cannot be created on port " + port);
+            System.out.println("Error: Server cannot be created on port " + port);
             System.exit(1);
         }
 
@@ -81,26 +81,38 @@ public class MultiThreadServer {
 
             try {
                 // Start listening to incoming client request (blocking function)
-                System.out.println("\n[TCP Server says] Waiting for connection.....");
+                System.out.println("\nWaiting for connection.....");
                 clientSocket = serverSocket.accept();
             }
             catch (IOException e)
             {
-                System.err.println("[TCP Server says] Error: Cannot accept client request.");
+                System.err.println("Error: Cannot accept client request.");
                 System.exit(1);
             }
 
             ExecutorService executorService = Executors.newFixedThreadPool(cores);
 
             try {
-                connectClients(clientSocket, serverSocket, executorService);
+                connectClient(clientSocket, serverSocket, executorService);
             } catch (IOException e) {
-                System.err.println("[TCP Server says] Error: Cannot accept client request.");
+                System.err.println("Error: Cannot accept client request.");
             }
         }
     }
 
-    private void connectClients(Socket clientSocket, ServerSocket serverSocket, ExecutorService executorService) throws IOException {
+    //***************************************************************
+    //
+    //  Method:       connectClient
+    //
+    //  Description:  connection to single client using separate
+    //                thread via ExecutorService
+    //
+    //  Parameters:   Socket, ServerSocket, ExecutorService
+    //
+    //  Returns:      N/A
+    //
+    //**************************************************************
+    private void connectClient(Socket clientSocket, ServerSocket serverSocket, ExecutorService executorService) throws IOException {
 
         try {
             // Create a new thread for each incoming message
@@ -108,7 +120,7 @@ public class MultiThreadServer {
         }
         catch (Exception e)
         {
-            System.err.println("[TCP Server says] Error: Cannot accept client request.");
+            System.err.println("Error: Cannot accept client request.");
             serverSocket.close();
             System.exit(1);
         }
@@ -130,7 +142,7 @@ public class MultiThreadServer {
     {
         System.out.println("Name:    Winton Haisler");
         System.out.println("Course:  COSC 4301 Modern Programming");
-        System.out.println("Program: Tree\n\n");
+        System.out.println("Program: Three\n\n");
 
     } // End of the developerInfo method
 }

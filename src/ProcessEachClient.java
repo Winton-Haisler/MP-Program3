@@ -14,15 +14,23 @@
 //
 //  Chapter:       Oracle OpenJDK 21.0.1
 //
-//  Description:
+//  Description:   processing thread extending Runnable to handle
+//                 reading and validating a range of 2 integers,
+//                 finding the prime numbers in the range and returning
+//                 the list of primes, sum, mean and standard deviation
+//                 of the primes.
 //
 //********************************************************************
 
-import java.io.*;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.stream.Collectors;
+
 
 public class ProcessEachClient implements Runnable{
     protected Socket clientSocket = null;
@@ -58,7 +66,7 @@ public class ProcessEachClient implements Runnable{
     //  Method:       talkClient
     //
     //  Description:  manage communication between client and server
-    //  			  throws IOException to be handled by runServer
+    //  			  throws IOException to be handled by run
     //
     //  Parameters:   Socket socket
     //
@@ -69,22 +77,15 @@ public class ProcessEachClient implements Runnable{
 
         PrintWriter output = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader input = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        System.out.println("Connection accepted.");
+        System.out.println("Connection accepted on thread" + Thread.currentThread().getName());
         String in = "";
 
-        while ((in = input.readLine()) != null)
+        while ((in = input.readLine()) != null && !in.equalsIgnoreCase("bye"))
         {
             System.out.println("Received: " + in);
-            if (in.equalsIgnoreCase("bye"))
-            {
-                write(output, "Bye");
-                break;
-            }
-            else
-            {
-                write(output, calcStats(in));
-            }
+            write(output, calcStats(in));
         }
+        write(output, "Bye");
     }
 
     //***************************************************************
@@ -132,7 +133,6 @@ public class ProcessEachClient implements Runnable{
                     .toArray();
 
             ArrayList<Integer> data = createDataList(args);
-            ArrayList<Integer> primeList = createPrimeList(data);
 
             sum = data.stream().reduce(0, Integer::sum);
             mean = (sum*1.0)/data.size();
@@ -144,12 +144,23 @@ public class ProcessEachClient implements Runnable{
             stdiv = Math.sqrt(stdiv/(data.size()-1));
 
             strValue = String.format("Thread ID: %s%nPrime numbers: %s%nSum: %d%nMean: %,.2f%nStandard Deviation: %,.2f",
-                    Thread.currentThread().getName(),primeList,sum, mean, stdiv);
+                    Thread.currentThread().getName(),data,sum, mean, stdiv);
         }
 
         return strValue;
     }
 
+    //***************************************************************
+    //
+    //  Method:       isPrime
+    //
+    //  Description:  return boolean true if number is prime otherwise false
+    //
+    //  Parameters:   int
+    //
+    //  Returns:      boolean
+    //
+    //**************************************************************
     public boolean isPrime(int number)
     {
         boolean rtnValue = true;
@@ -173,18 +184,14 @@ public class ProcessEachClient implements Runnable{
         return rtnValue;
     }
 
-    private ArrayList<Integer> createPrimeList(ArrayList<Integer> data)
-    {
-        return data.stream().filter(this::isPrime).collect(Collectors.toCollection(ArrayList::new));
-    }
-
     //***************************************************************
     //
     //  Method:       createDataList
     //
-    //  Description:  populate list of even/odd integers between a range
+    //  Description:  populate an ArrayList of prime integers
+    //                between a range
     //
-    //  Parameters:   int [3] array of input arguments [start, end, even/odd]
+    //  Parameters:   int [2] array of input arguments [start, end]
     //
     //  Returns:      ArrayList<Integer>
     //
@@ -194,7 +201,8 @@ public class ProcessEachClient implements Runnable{
         ArrayList<Integer> data = new ArrayList<>();
         for(int i = args[0]; i <= args[1]; i++)
         {
-            data.add(i);
+            if(isPrime(i))
+                data.add(i);
         }
         return data;
     }
@@ -206,7 +214,8 @@ public class ProcessEachClient implements Runnable{
     //  			     if it is valid return an empty string
     //  			     otherwise return an error message
     //
-    //  Parameters:	  String input (should be 3 space seperated integer values)
+    //  Parameters:	  String input (should be 2 space and/or comma
+    //                seperated integer values)
     //
     //  Returns:      String message
     //
