@@ -1,0 +1,182 @@
+Server output:
+
+Name:    Winton Haisler
+Course:  COSC 4301 Modern Programming
+Program: Three
+
+
+Server created on port 4301
+
+Waiting for connection.....
+
+Waiting for connection.....
+Connection accepted on threadpool-1-thread-1
+Received: 10 5
+Server Sending:
+Error: The 1st integer must be less than the 2nd.
+Received: as asd
+Server Sending:
+as is an invalid integer. Enter positive integers only.
+Received: 1
+Server Sending:
+Invalid number of arguments. Enter 2 space or comma seperated positive integers.
+Received: 2.5 2.5
+Server Sending:
+2.5 is an invalid integer. Enter positive integers only.
+Received: 1  15
+Server Sending:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7, 11, 13]
+Sum: 41
+Mean: 6.83
+Standard Deviation: 4.40
+Received: 1  ,  10
+Server Sending:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7]
+Sum: 17
+Mean: 4.25
+Standard Deviation: 2.22
+Received: 1, 20
+Server Sending:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7, 11, 13, 17, 19]
+Sum: 77
+Mean: 9.63
+Standard Deviation: 6.39
+Received: 1 5 4
+Server Sending:
+Invalid number of arguments. Enter 2 space or comma seperated positive integers.
+Server Sending:
+Bye
+
+Waiting for connection.....
+Connection accepted on threadpool-2-thread-1
+
+Waiting for connection.....
+Connection accepted on threadpool-3-thread-1
+
+Waiting for connection.....
+Connection accepted on threadpool-4-thread-1
+
+Waiting for connection.....
+Connection accepted on threadpool-5-thread-1
+
+Waiting for connection.....
+Connection accepted on threadpool-6-thread-1
+Received: 1 100
+Server Sending:
+Thread ID: pool-4-thread-1
+Prime numbers: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+Sum: 1060
+Mean: 42.40
+Standard Deviation: 29.48
+Received: 100 200
+Server Sending:
+Thread ID: pool-3-thread-1
+Prime numbers: [101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199]
+Sum: 3167
+Mean: 150.81
+Standard Deviation: 32.91
+Received: 200 300
+Server Sending:
+Thread ID: pool-6-thread-1
+Prime numbers: [211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293]
+Sum: 4048
+Mean: 253.00
+Standard Deviation: 24.79
+Received: 300 400
+Server Sending:
+Thread ID: pool-5-thread-1
+Prime numbers: [307, 311, 313, 317, 331, 337, 347, 349, 353, 359, 367, 373, 379, 383, 389, 397]
+Sum: 5612
+Mean: 350.75
+Standard Deviation: 29.36
+Received: 400 500
+Server Sending:
+Thread ID: pool-2-thread-1
+Prime numbers: [401, 409, 419, 421, 431, 433, 439, 443, 449, 457, 461, 463, 467, 479, 487, 491, 499]
+Sum: 7649
+Mean: 449.94
+Standard Deviation: 29.18
+Error: Client disconnected unexpectedly.
+Server Sending:
+Bye
+Server Sending:
+Bye
+Error: Client disconnected unexpectedly.
+Error: Client disconnected unexpectedly.
+
+Waiting for connection.....
+Connection accepted on threadpool-7-thread-1
+
+
+----------------------
+first client output
+----------------------
+C:\Users\Omoikane\.jdks\openjdk-21.0.1\bin\java.exe "-javaagent:C:\Users\Omoikane\AppData\Local\Programs\IntelliJ IDEA Ultimate\lib\idea_rt.jar=59256:C:\Users\Omoikane\AppData\Local\Programs\IntelliJ IDEA Ultimate\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\Omoikane\Documents\SCHOOL\SP2024\Modern Programming\MP-Program3\out\production\MP-Project3" MultiThreadClient
+Enter a number or "Bye" to quit: 10 5
+Sending: 10 5
+Server Response:
+Error: The 1st integer must be less than the 2nd.
+
+Enter a number or "Bye" to quit: as asd
+Sending: as asd
+Server Response:
+as is an invalid integer. Enter positive integers only.
+
+Enter a number or "Bye" to quit: 1
+Sending: 1
+Server Response:
+Invalid number of arguments. Enter 2 space or comma seperated positive integers.
+
+Enter a number or "Bye" to quit: 2.5 2.5
+Sending: 2.5 2.5
+Server Response:
+2.5 is an invalid integer. Enter positive integers only.
+
+Enter a number or "Bye" to quit: 1  15
+Sending: 1  15
+Server Response:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7, 11, 13]
+Sum: 41
+Mean: 6.83
+Standard Deviation: 4.40
+
+Enter a number or "Bye" to quit: 1  ,  10
+Sending: 1  ,  10
+Server Response:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7]
+Sum: 17
+Mean: 4.25
+Standard Deviation: 2.22
+
+Enter a number or "Bye" to quit: 1, 20
+Sending: 1, 20
+Server Response:
+Thread ID: pool-1-thread-1
+Prime numbers: [2, 3, 5, 7, 11, 13, 17, 19]
+Sum: 77
+Mean: 9.63
+Standard Deviation: 6.39
+
+Enter a number or "Bye" to quit: 1 5 4
+Sending: 1 5 4
+Server Response:
+Invalid number of arguments. Enter 2 space or comma seperated positive integers.
+
+Enter a number or "Bye" to quit: bye
+Sending: bye
+Closing socket.
+Process finished with exit code 0
+
+------------------------------------------------------------------
+last client output (force closed server and sent data from client)
+------------------------------------------------------------------
+Enter a number or "Bye" to quit: 1 23
+Sending: 1 23
+Error: Server not found.
+
+Process finished with exit code 0

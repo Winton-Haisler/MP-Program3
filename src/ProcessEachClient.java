@@ -270,11 +270,11 @@ public class ProcessEachClient implements Runnable{
             int intValue = Integer.parseInt(value);
             if (intValue < 1)
             {
-                out = value + " is an invalid number. Enter positive integers only. ";
+                out = value + " is an invalid integer. Enter positive integers only. ";
             }
 
         } catch (NumberFormatException exp) {
-            out = value + " is not a number. Enter positive integers only. ";
+            out = value + " is an invalid integer. Enter positive integers only. ";
         }
         return out;
     }
